@@ -239,6 +239,7 @@
             this.btComa.TabIndex = 22;
             this.btComa.Text = ",";
             this.btComa.UseVisualStyleBackColor = true;
+            this.btComa.Click += new System.EventHandler(this.btComa_Click);
             // 
             // btRaiz
             // 

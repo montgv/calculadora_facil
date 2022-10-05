@@ -206,7 +206,18 @@ namespace calculadora_facil
             }
         }
 
-        int numero1, numero2;
+        private void btComa_Click(object sender, EventArgs e)
+        {
+            if (tBPantalla.Text.Length == 0)
+            {
+                tBPantalla.Text = "0,";
+            } else
+            {
+                tBPantalla.Text = tBPantalla.Text + ",";
+            }
+        }
+
+        double numero1, numero2;
         double operacion = 0;
 
         private void btIgual_Click(object sender, EventArgs e)
@@ -217,8 +228,8 @@ namespace calculadora_facil
 
                 String[] numSeparados = pantalla.Split('+');
 
-                numero1 = int.Parse(numSeparados[0]);
-                numero2 = int.Parse(numSeparados[1]);
+                numero1 = double.Parse(numSeparados[0]);
+                numero2 = double.Parse(numSeparados[1]);
 
                 operacion = numero1 + numero2;
 
@@ -272,7 +283,7 @@ namespace calculadora_facil
                 numero1 = int.Parse(numSeparados[0]);
                 numero2 = int.Parse(numSeparados[1]);
 
-                operacion = Potencia(numero1, numero2);
+                operacion = Math.Pow(numero1, numero2);
 
                 tBPantalla.Text = operacion.ToString();
 
@@ -300,19 +311,6 @@ namespace calculadora_facil
                 tBPantalla.Text = operacion.ToString();
             }
         }
-
-        private static double Potencia(int x, int y)
-        {
-            if (y == 0)
-            {
-                return 1;
-            } else
-            {
-                return x * Potencia(x, y - 1);
-            }
-        }
-
-        
 
         private void btBorrar_Click(object sender, EventArgs e)
         {
