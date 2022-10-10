@@ -12,6 +12,8 @@ namespace calculadora_facil
 {
     public partial class Form1 : Form
     {
+        int contador = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -21,6 +23,8 @@ namespace calculadora_facil
 
         private void bt1_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt1.Text;
@@ -32,6 +36,8 @@ namespace calculadora_facil
 
         private void bt0_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt0.Text;
@@ -43,6 +49,8 @@ namespace calculadora_facil
 
         private void bt2_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt2.Text;
@@ -54,6 +62,8 @@ namespace calculadora_facil
 
         private void bt3_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt3.Text;
@@ -65,6 +75,8 @@ namespace calculadora_facil
 
         private void bt4_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt4.Text;
@@ -76,6 +88,8 @@ namespace calculadora_facil
 
         private void bt5_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt5.Text;
@@ -87,6 +101,8 @@ namespace calculadora_facil
 
         private void bt6_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt6.Text;
@@ -98,6 +114,8 @@ namespace calculadora_facil
 
         private void bt7_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt7.Text;
@@ -109,6 +127,8 @@ namespace calculadora_facil
 
         private void bt8_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt8.Text;
@@ -120,6 +140,8 @@ namespace calculadora_facil
 
         private void bt9_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = bt9.Text;
@@ -131,6 +153,8 @@ namespace calculadora_facil
 
         private void btMas_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = "";
@@ -142,6 +166,8 @@ namespace calculadora_facil
 
         private void btMenos_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = "";
@@ -153,6 +179,8 @@ namespace calculadora_facil
 
         private void btMultiplicar_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = "";
@@ -164,6 +192,8 @@ namespace calculadora_facil
 
         private void btDividir_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = "";
@@ -175,6 +205,8 @@ namespace calculadora_facil
 
         private void btRaiz_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = "";
@@ -186,6 +218,8 @@ namespace calculadora_facil
 
         private void btExponente_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = "";
@@ -197,6 +231,8 @@ namespace calculadora_facil
 
         private void btFraccion_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = "";
@@ -208,6 +244,8 @@ namespace calculadora_facil
 
         private void btComa_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Length == 0)
             {
                 tBPantalla.Text = "0,";
@@ -222,6 +260,8 @@ namespace calculadora_facil
 
         private void btIgual_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = false;
+
             if (tBPantalla.Text.Contains("+"))
             {
                 String pantalla = tBPantalla.Text;
@@ -312,8 +352,22 @@ namespace calculadora_facil
             }
         }
 
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            contador++;
+            if (contador % 2 == 0)
+            {
+                tBPantalla.BackColor = Color.PowderBlue;
+            } else
+            {
+                tBPantalla.BackColor = Color.White;
+            }
+        }
+
         private void btBorrar_Click(object sender, EventArgs e)
         {
+            this.timer1.Enabled = true;
+
             tBPantalla.Clear();
         }
     }
