@@ -23,7 +23,7 @@ namespace calculadora_facil
 
         private void bt1_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -36,7 +36,7 @@ namespace calculadora_facil
 
         private void bt0_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -49,7 +49,7 @@ namespace calculadora_facil
 
         private void bt2_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -62,7 +62,7 @@ namespace calculadora_facil
 
         private void bt3_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -75,7 +75,7 @@ namespace calculadora_facil
 
         private void bt4_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -88,7 +88,7 @@ namespace calculadora_facil
 
         private void bt5_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -101,7 +101,7 @@ namespace calculadora_facil
 
         private void bt6_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -114,7 +114,7 @@ namespace calculadora_facil
 
         private void bt7_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -127,7 +127,7 @@ namespace calculadora_facil
 
         private void bt8_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -140,7 +140,7 @@ namespace calculadora_facil
 
         private void bt9_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -153,7 +153,7 @@ namespace calculadora_facil
 
         private void btMas_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -166,11 +166,11 @@ namespace calculadora_facil
 
         private void btMenos_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
-                tBPantalla.Text = "";
+                tBPantalla.Text = "-";
             } else
             {
                 tBPantalla.Text = tBPantalla.Text + btMenos.Text;
@@ -179,7 +179,7 @@ namespace calculadora_facil
 
         private void btMultiplicar_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -192,7 +192,7 @@ namespace calculadora_facil
 
         private void btDividir_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -205,11 +205,11 @@ namespace calculadora_facil
 
         private void btRaiz_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
-                tBPantalla.Text = "";
+                tBPantalla.Text = "√";
             } else
             {
                 tBPantalla.Text = tBPantalla.Text + btRaiz.Text;
@@ -218,7 +218,7 @@ namespace calculadora_facil
 
         private void btExponente_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -231,7 +231,7 @@ namespace calculadora_facil
 
         private void btFraccion_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -244,7 +244,7 @@ namespace calculadora_facil
 
         private void btComa_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
 
             if (tBPantalla.Text.Length == 0)
             {
@@ -260,93 +260,64 @@ namespace calculadora_facil
 
         private void btIgual_Click(object sender, EventArgs e)
         {
-            this.timer1.Enabled = false;
+            pantallaBlanco();
+
+            String pantalla = tBPantalla.Text;
+            String[] numSeparados = pantalla.Split(new char[] {'+', '-', '*', '/', '√', '^'});
+            char[] caracteres = tBPantalla.Text.ToCharArray();
+
+            if (caracteres[0] == '-' && numSeparados[0] == "")
+            {
+                String numero = caracteres[0] + numSeparados[1];
+                numero1 = double.Parse(numero);
+                numero2 = double.Parse(numSeparados[2]);
+            } else if (tBPantalla.Text.Contains("√"))
+            {
+                numero1 = double.Parse(numSeparados[1]);
+            } else
+            {
+                numero1 = double.Parse(numSeparados[0]);
+                numero2 = double.Parse(numSeparados[1]);
+            }
 
             if (tBPantalla.Text.Contains("+"))
             {
-                String pantalla = tBPantalla.Text;
-
-                String[] numSeparados = pantalla.Split('+');
-
-                numero1 = double.Parse(numSeparados[0]);
-                numero2 = double.Parse(numSeparados[1]);
-
                 operacion = numero1 + numero2;
 
                 tBPantalla.Text = operacion.ToString();
 
             } else if (tBPantalla.Text.Contains("-"))
             {
-                String pantalla = tBPantalla.Text;
-
-                String[] numSeparados = pantalla.Split('-');
-
-                numero1 = int.Parse(numSeparados[0]);
-                numero2 = int.Parse(numSeparados[1]);
-
                 operacion = numero1 - numero2;
 
                 tBPantalla.Text = operacion.ToString();
 
             } else if (tBPantalla.Text.Contains("*"))
             {
-                String pantalla = tBPantalla.Text;
-
-                String[] numSeparados = pantalla.Split('*');
-
-                numero1 = int.Parse(numSeparados[0]);
-                numero2 = int.Parse(numSeparados[1]);
-
                 operacion = numero1 * numero2;
 
                 tBPantalla.Text = operacion.ToString();
 
             } else if (tBPantalla.Text.Contains("/"))
             {
-                String pantalla = tBPantalla.Text;
-
-                String[] numSeparados = pantalla.Split('/');
-
-                numero1 = int.Parse(numSeparados[0]);
-                numero2 = int.Parse(numSeparados[1]);
-
                 operacion = numero1 / numero2;
 
                 tBPantalla.Text = operacion.ToString();
 
             } else if (tBPantalla.Text.Contains("^"))
             {
-                String pantalla = tBPantalla.Text;
-
-                String[] numSeparados = pantalla.Split('^');
-
-                numero1 = int.Parse(numSeparados[0]);
-                numero2 = int.Parse(numSeparados[1]);
-
                 operacion = Math.Pow(numero1, numero2);
 
                 tBPantalla.Text = operacion.ToString();
 
             } else if (tBPantalla.Text.Contains("√")) 
             {
-                String pantalla = tBPantalla.Text;
-
-                String[] numSeparados = pantalla.Split('√');
-
-                numero1 = int.Parse(numSeparados[0]);
-
                 operacion = Math.Sqrt(numero1);
 
                 tBPantalla.Text = operacion.ToString();
             } else if (tBPantalla.Text.Contains("1/"))
             {
-                String pantalla = tBPantalla.Text;
-
-                String[] numSeparados = pantalla.Split('/');
-
-                numero1 = int.Parse(numSeparados[1]);
-
-                operacion = 1 / numero1;
+                operacion = numero1 / numero2;
 
                 tBPantalla.Text = operacion.ToString();
             }
@@ -362,6 +333,12 @@ namespace calculadora_facil
             {
                 tBPantalla.BackColor = Color.White;
             }
+        }
+
+        private void pantallaBlanco()
+        {
+            this.timer1.Enabled = false;
+            this.tBPantalla.BackColor = Color.White;
         }
 
         private void btBorrar_Click(object sender, EventArgs e)
