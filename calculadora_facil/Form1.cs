@@ -12,6 +12,7 @@ namespace calculadora_facil
 {
     public partial class Form1 : Form
     {
+        //Este contador lo usamos para usar la funcion de parpadeo
         int contador = 0;
 
         public Form1()
@@ -20,7 +21,10 @@ namespace calculadora_facil
         }
 
         
-
+        //En todos estos botones hasta que se diga otra cosa, le ponemos la pantalla para que este siempre
+        //en blanco y no se ejecute la funcion de parpadeo
+        //Otra cosa que tambien hace es pintar en la pantalla el boton que pulsamos o añadiendolo a lo que
+        //ya teniamos en la pantalla
         private void bt1_Click(object sender, EventArgs e)
         {
             pantallaBlanco();
@@ -209,10 +213,10 @@ namespace calculadora_facil
 
             if (tBPantalla.Text.Length == 0)
             {
-                tBPantalla.Text = "√";
+                tBPantalla.Text = "";
             } else
             {
-                tBPantalla.Text = tBPantalla.Text + btRaiz.Text;
+                tBPantalla.Text = btRaiz.Text + tBPantalla.Text;
             }
         }
 
@@ -262,6 +266,14 @@ namespace calculadora_facil
         {
             pantallaBlanco();
 
+            //En esta parte lo que hacemos es separar el texto que tenemos por pantalla y quedarnos
+            //solo con los numeros, o como en el primer if si el numero empieza o queda en la pantalla
+            //un numero negativo que tambien se guarde su signo
+            //En el else if estamos guardando el numero con el que se hace la operacion en una raiz
+            //cuadrada
+            //En el else estamos guardando los numeros cuando estan separados por el split
+            //cuando tienen algunos de los simbolos de abajo
+
             String pantalla = tBPantalla.Text;
             String[] numSeparados = pantalla.Split(new char[] {'+', '-', '*', '/', '√', '^'});
             char[] caracteres = tBPantalla.Text.ToCharArray();
@@ -271,14 +283,17 @@ namespace calculadora_facil
                 String numero = caracteres[0] + numSeparados[1];
                 numero1 = double.Parse(numero);
                 numero2 = double.Parse(numSeparados[2]);
-            } else if (tBPantalla.Text.Contains("√"))
+            } else if (tBPantalla.Text.Contains("√") && numSeparados[0] == "")
             {
                 numero1 = double.Parse(numSeparados[1]);
-            } else
+            } else 
             {
                 numero1 = double.Parse(numSeparados[0]);
                 numero2 = double.Parse(numSeparados[1]);
             }
+
+            //En esta parte con los numeros anteriores segun el caso, sacamos por pantalla el resultado 
+            //de la operacion
 
             if (tBPantalla.Text.Contains("+"))
             {
@@ -323,6 +338,9 @@ namespace calculadora_facil
             }
         }
 
+        //Con esta funcion lo que estamos haciendo es que parpadee la pantalla con la ayuda del
+        //contador y del cambio de color de la pantalla
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             contador++;
@@ -335,11 +353,17 @@ namespace calculadora_facil
             }
         }
 
+        //En esta funcion lo que estamos haciendo es que el timer1 no se ejecute porque no esta 
+        //activado, y que la pantalla se ponga de color blanca cuando se llame a esta funcion
+
         private void pantallaBlanco()
         {
             this.timer1.Enabled = false;
             this.tBPantalla.BackColor = Color.White;
         }
+
+        //Aqui lo que hacemos es que cuando pulsemos el boton Borrar, la funcion timer1 se 
+        //empieza a ejecutar porque esta activado y tambien la pantalla se borra
 
         private void btBorrar_Click(object sender, EventArgs e)
         {
